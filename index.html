@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>كل سنة وأنتي طيبة يا ملوكتي</title>
+    <style>
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+            overflow: hidden;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* إعداد الخلفية */
+        .background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: url('https://uploads.onecompiler.io/44fvndfmc/44fvv8p35/1000064670.jpg'); /* استبدل هذا باسم صورتك */
+            background-size: cover;
+            background-position: center;
+            z-index: -1;
+        }
+
+        /* النص الرئيسي */
+        .main-text {
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            color: white;
+            font-size: 3rem;
+            text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.7);
+            text-align: center;
+            width: 90%;
+            pointer-events: none;
+        }
+
+        /* التاريخ أسفل اليسار */
+        .date {
+            position: absolute;
+            bottom: 20px;
+            left: 20px;
+            color: white;
+            font-size: 1.5rem;
+            text-shadow: 1px 1px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        /* تصميم القلوب */
+        .heart {
+            position: absolute;
+            color: #ff4d4d;
+            font-size: 20px;
+            pointer-events: none;
+            animation: floatUp 2s linear forwards;
+        }
+
+        @keyframes floatUp {
+            0% { transform: translateY(0) scale(1); opacity: 1; }
+            100% { transform: translateY(-200px) scale(1.5); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="background"></div>
+    <div class="main-text">كل سنة وأنتي طيبة يا ملوكتي</div>
+    <div class="date">18/3/2009</div>
+
+    <script>
+        // كود ظهور القلوب عند الضغط
+        document.addEventListener('click', (e) => {
+            for (let i = 0; i < 5; i++) { // تظهر 5 قلوب مع كل ضغطة
+                createHeart(e.clientX, e.clientY);
+            }
+        });
+
+        function createHeart(x, y) {
+            const heart = document.createElement('div');
+            heart.classList.add('heart');
+            heart.innerHTML = '❤️';
+            
+            // توزيع عشوائي طفيف للقلوب حول مكان الضغطة
+            const offset = () => Math.floor(Math.random() * 40) - 20;
+            heart.style.left = (x + offset()) + 'px';
+            heart.style.top = (y + offset()) + 'px';
+            
+            document.body.appendChild(heart);
+
+            setTimeout(() => {
+                heart.remove();
+            }, 2000);
+        }
+    </script>
+</body>
+</html>
